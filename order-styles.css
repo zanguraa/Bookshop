@@ -1,0 +1,76 @@
+
+body {
+    background-color: rgb(31, 30, 30);
+    margin: 8rem;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+    color: rgb(180, 170, 170);
+}
+    #delivery-container {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: space-around;
+    }
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    flex-direction: column;
+    align-items: baseline;
+    width: 500px;
+}
+
+h1 {
+    margin-left: 44px;
+}
+
+li {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+}
+
+input {
+    height: 30px;
+    width: 300px;
+    font-size: 20px;
+}
+
+p {
+    margin: 5px;
+}
+
+.card-pay-container {
+    display: flex;
+}
+
+#card-pay  {
+width: 40px;
+}
+
+#cash-pay {
+    width: 40px;
+}
+
+#cash-card {
+    margin: 10px;
+    padding: 5px;
+    border: 2px solid rgb(180, 170, 170);
+    background-color: azure;
+    border-radius: 8px;
+}
+
+#cash-card:hover {
+    background-color: rgb(31, 30, 30);
+}
+
+#gift ul {
+    
+}
+
+#gift ul li {
+
+}

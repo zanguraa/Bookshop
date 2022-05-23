@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="order-styles.css">
+    <title>Order delivery</title>
+</head>
+<body>
+    <div id="delivery-container">
+    <h1>Order delivery</h3>
+    <form action="GET">
+        <section>
+            <ul>
+                <li>
+        <label for="fname">Name</label>
+        <input id="fname" type="text" name="firstname" minlength="4">
+    </li>
+    <li>
+        <label for="sname">SurName</label>
+        <input type="text" name="surname" id="sname">
+    </li>
+    <li>
+        <label for="delivery">delivery date</label>
+        <input type="text" name="" id="delivery">
+    </li>
+    <li>
+        <label for="street">street</label>
+        <input type="text" name="" id="street">
+    </li>
+    <li>
+        <label for="housen">house number</label>
+        <input type="text" name="" id="housen">
+    </li>
+    <li>
+        <label for="flatn">flat number</label>
+        <input type="text" name="" id="flatn">
+    </li>
+    <li id="cash-card">
+        <p>Choose the payment type</p>
+        <div class="card-pay-container">
+        <label for="card">Card</label>
+        <input type="radio" id="card-pay" name="fav_language" value="card">
+        </div>
+        <div class="card-pay-container">
+        <label for="cash">Cash</label>
+        <input type="radio" id="cash-pay" name="fav_language" value="cash">
+        </div>
+    </li>
+    </ul>
+    </section>
+
+    <section id="gift">
+        <ul>
+            
+        <legend>Gift (only 2 gifts per order available)</legend>
+        <li></li>
+        <input type="checkbox" id="pack" name="present" value="Pack as a gift">
+        <label for="pack">Pack as a gift</label>
+    </li>
+    <li>
+        <input type="checkbox" id="postcard" name="present" value="Add postcard">
+        <label for="postcard">Add postcard</label>
+    </li>
+    <li>
+        <input type="checkbox" id="discount" name="present" value="Provide 2% discount to the next time">
+        <label for="discount">Provide 2% discount to the next time</label>
+    </li>
+    <li>
+        <input type="checkbox" id="brandedpresent" name="present" value="Branded pen or pencil">
+        <label for="brandedpresent">Branded pen or pencil</label>
+    </li>
+    <li>
+        <span class="error" aria-live="polite"></span>
+        </li>
+    </ul>
+    </section>
+    </form>
+</div>
+
+</body>
+</html>
