@@ -1,14 +1,14 @@
 [{
     "author": "Douglas Crockford",
     "imageLink": "./images/The_Good_Parts.jpg",
-    "title": "JavaScript: <br> The Good Parts: The Good Parts",
+    "title": "JavaScript: The Good Parts: The Good Parts",
     "price": 30,
     "description": "With JavaScript: The Good Parts, you'll discover a beautiful, elegant, lightweight and highly expressive language that lets you create effective code, whether you're managing object libraries or just trying to get Ajax to run fast. If you develop sites or applications for the Web, this book is an absolute must"
   },
     {
       "author": "David Herman",
       "imageLink": "./images/effective_javascript.jpg",
-      "title": "Effective JavaScript: <br> 68 Specific Ways to Harness",
+      "title": "Effective JavaScript: 68 Specific Ways to Harness",
       "price": 22,
       "description": "Effective JavaScript is organized around 68 proven approaches for writing better JavaScript, backed by concrete examples. You’ll learn how to choose the right programming style for each project, manage unanticipated problems, and work more successfully with every facet of JavaScript programming from data structures to concurrency"
     },
