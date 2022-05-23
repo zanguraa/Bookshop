@@ -51,7 +51,7 @@ for( let i = 0; i < listArr.length; i++) {
          });
 
         cart.addEventListener('drop',drop );
-        cart.addEventListener("dragover", allowDrop);
+        cart.addEventListener("dragover", dragOver);
         cartLI.appendChild(cart);
         listNavbar.appendChild(cartLI);
 
@@ -62,7 +62,6 @@ books.classList.add("main-div");
 
 
 function createCartContainer() {
-
     var cartBlock = document.createElement('div');
     cartBlock.classList.add('cart-block');
 
@@ -80,26 +79,23 @@ function createCartContainer() {
 
     
     var priceEl = document.createElement('span');
+    var totalPrice = 0;
+
+    cartItems.forEach(element => {
+        totalPrice += element.price;
+    });
+
+
     cartItems.forEach( (book, index) => {
 
-        if (priceEl.innerHTML.split(' ')[1]) {
-            Number.parseInt(priceEl.innerHTML.split(' ')[1])
-        } else {
-            0   
-        }
-
-        let priceSpan = priceEl.innerHTML.split(' ')[1] ? Number.parseInt(priceEl.innerHTML.split(' ')[1]) : 0;
-        priceSpan += book.price;
-        console.warn(priceSpan, book.price, priceEl.innerHTML.split(' '))
-
-        priceEl.innerHTML = `Price: ${priceSpan} ₾`;
+        priceEl.innerHTML = `Price: ${totalPrice} ₾`;
         
         var bookCont = document.createElement('div');
         bookCont.classList.add('book_container-cart');
         bookCont.id = index;
     
         bookCont.draggable = true;
-        bookCont.addEventListener('drag', drag); 
+        // bookCont.addEventListener('drag', drag); 
     
         var imageBlock = document.createElement('div');
         imageBlock.classList.add('image_container-cart');
@@ -127,40 +123,56 @@ function createCartContainer() {
         infoBlock.appendChild(price);
 
         
-    
-         var removeBat = document.createElement('button');
+        var removeBat = document.createElement('button');
          removeBat.innerHTML = 'remove';
          removeBat.id = 'remove_button';
             
         removeBat.addEventListener('click', function(event) {
-            var buttonClicked = event.target
+            var buttonClicked = event.target;
+            cartItems.splice(index, 1);
             buttonClicked.parentElement.parentElement.remove();
+
+            totalPrice -= book.price;
+
+            priceEl.innerHTML = `Price: ${totalPrice} ₾`;
+
         } );
-        infoBlock.appendChild(removeBat);
-        
+
+
+        infoBlock.appendChild(removeBat);        
     
         bookCont.appendChild(imageBlock);
         bookCont.appendChild(infoBlock);
         cart_content.appendChild(bookCont);    
        
     });
+    
+    var confirmBat = document.createElement('button');
+    confirmBat.innerHTML = 'Confirm order';
+    confirmBat.id = 'confirm_button';
+    confirmBat.addEventListener('click', function(event) {
+        window.open('./order.html');
+
+    } );
 
     var closeCart = document.createElement('span');
+    closeCart.classList.add('close-cart');
     closeCart.innerHTML = '&times;';
 
     closeCart.onclick = function() {
         cartBlock.style.display = "block";
     }
     window.onclick = function(event) {
-        if (event.target == cartBlock) {
+        if (event.target == closeCart) {
             cartBlock.style.display = "none";
         }
     }
 
-  cartBlock.appendChild(closeCart);
+    cartBlock.appendChild(closeCart);
     cart_content.appendChild(priceEl);
-    
+    cart_content.appendChild(confirmBat);
     body.appendChild(cartBlock);
+    
 }
 
 
@@ -208,18 +220,37 @@ function addToCart(index) {
     cartItems.push(items[index]);
 }
 
-function allowDrop(ev) {
-    ev.preventDefault();
-  }
+// function allowDrop(ev) {
+//     ev.preventDefault();
+//   }
   
-  function drag(ev) {
-    ev.dataTransfer.setData("book", ev.target.id);
-  }
+//   function drag(ev) {
+//     ev.dataTransfer.setData("book", ev.target.id);
+//   }
   
-  function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("book");
-    console.warn(document.getElementById(data));
+//   function drop(ev) {
+//     ev.preventDefault();
+//     var data = ev.dataTransfer.getData("book");
+//     console.warn(document.getElementById(data));
+//   }
+    dragBookTitle = "";
+  function dragStart(e) {
+    e.stopPropagation();
+    let title = e.target.querySelector(".book_title").innerText;
+    dragBookTitle = title;
+    console.warn(dragBookTitle)
+  }
+
+  function dragOver(e) {
+    e.preventDefault();
+  }
+
+  function drop(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      cartItems = cartItems.concat(items.filter( book => book.title == dragBookTitle));
+    console.warn(cartItems, items.filter( book => book.title == dragBookTitle));
+    dragBookTitle = "";
   }
 
 fetch('./books.json').then(response => {
@@ -233,7 +264,7 @@ fetch('./books.json').then(response => {
         bookCont.id = index;
 
         bookCont.draggable = true;
-        bookCont.addEventListener('drag', drag); 
+        bookCont.addEventListener('dragstart', dragStart); 
 
         var imageBlock = document.createElement('div');
         imageBlock.classList.add('image_container');
@@ -249,7 +280,8 @@ fetch('./books.json').then(response => {
         author.innerHTML = book.author;
         infoBlock.appendChild(author);
 
-        var title = document.createElement('h1');
+        var title = document.createElement('h4');
+        title.classList.add('book_title');
         title.innerHTML = book.title;
         infoBlock.appendChild(title);        
 

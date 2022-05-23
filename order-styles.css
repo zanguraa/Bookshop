@@ -67,10 +67,36 @@ width: 40px;
     background-color: rgb(31, 30, 30);
 }
 
+#gift input {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+}
+
 #gift ul {
-    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start
 }
 
 #gift ul li {
-
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
+
+section ul li .error {
+    font-size: 18px;
+    color: red;
+    display: none;
+    font-family: sans-serif;
+}
+
+#gift .error {
+    font-size: 18px;
+    color: red;
+    display: none;
+    font-family: sans-serif;
+}
+
