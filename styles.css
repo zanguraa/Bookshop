@@ -275,3 +275,24 @@ h4 {
   background-color: #a91616;
   cursor: pointer;
 }
+
+#info {
+  position: absolute;
+  display: none;
+  z-index: 4444;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: red;
+}
+#info h1 {
+  text-align: center;
+}
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
