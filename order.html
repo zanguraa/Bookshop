@@ -13,78 +13,84 @@
 <body>
     <div id="delivery-container">
     <h1>Order delivery</h3>
-    <form action="GET">
-        <section>
+        <div id="cont">
+            <section>
+                <ul>
+                    <li>
+                        <label for="fname">Name</label>
+                        <input id="fname" type="text" name="firstname" required minlength="4" oninput="main_validation('fname', 'name','firstname_error')" onblur="main_validation('fname', 'name','firstname_error')">
+                        <span class="error" id="firstname_error"></span>
+                    </li>
+                    <li>
+                        <label for="sname">SurName</label>
+                        <input type="text" name="surname" id="sname" required oninput="main_validation('sname','surname','lastname_error')" onblur="main_validation('sname', 'surname','lastname_error')">
+                        <span class="error" id="lastname_error"></span>
+                    </li>
+                    <li>
+                        <label for="delivery">delivery date</label>
+                        <input type="date" name="deliverydate" id="delivery" oninput="main_validation('delivery','delivery','deliverydate_error')">
+                        <span class="error" id="deliverydate_error"></span>
+                    </li>
+                    <li>
+                        <label for="street">street</label>
+                        <input type="text" name="street" id="street" oninput="main_validation('street', 'street','street_error')" onblur="main_validation('street', 'street','street_error')">
+                        <span class="error" id="street_error"></span>
+                    </li>
+                    <li>
+                        <label for="housen">house number</label>
+                        <input type="text" name="house" id="housen" oninput="main_validation('housen', 'house','house_error')" onblur="main_validation('housen', 'house','house_error')">
+                        <span class="error" id="house_error"></span>
+                    </li>
+                    <li>
+                        <label for="flatn">flat number</label>
+                        <input type="text" name="flat" id="flatn" oninput="main_validation('flatn', 'flat','flat_error')" onblur="main_validation('flatn', 'flat','flat_error')">
+                        <span class="error" id="flat_error"></span>
+                    </li>
+                    <li id="cash-card">
+                        <p>Choose the payment type</p>
+                        <div class="card-pay-container">
+                            <label for="card">Card</label>
+                            <input type="radio" id="card-pay" name="fav_language" value="card"  oninput="validateRadio('card-pay')">
+                        </div>
+                        <div class="card-pay-container">
+                            <label for="cash">Cash</label>
+                            <input type="radio" id="cash-pay" name="fav_language" value="cash" oninput="validateRadio('cash-pay')">
+                        </div>
+                    </li>
+                </ul>
+            </section>
+    
+        <section id="gift">
+            <legend>Gift (only 2 gifts per order available)</legend>
             <ul>
                 <li>
-                    <label for="fname">Name</label>
-                    <input id="fname" type="text" name="firstname" required minlength="4" oninput="main_validation('fname', 'name','firstname_error')" onblur="main_validation('fname', 'name','firstname_error')">
-                    <span class="error" id="firstname_error"></span>
+                    <input class="checkbox" type="checkbox" id="pack" name="present" value="Pack as a gift" oninput="validateCheckBoxes(2, 'checkbox_error')">
+                    <label for="pack">Pack as a gift</label>
                 </li>
                 <li>
-                    <label for="sname">SurName</label>
-                    <input type="text" name="surname" id="sname" required oninput="main_validation('sname','surname','lastname_error')" onblur="main_validation('sname', 'surname','lastname_error')">
-                    <span class="error" id="lastname_error"></span>
+                    <input class="checkbox" type="checkbox" id="postcard" name="present" value="Add postcard" oninput="validateCheckBoxes(2, 'checkbox_error')">
+                    <label for="postcard">Add postcard</label>
                 </li>
                 <li>
-                    <label for="delivery">delivery date</label>
-                    <input type="date" name="deliverydate" id="delivery" oninput="main_validation('delivery','delivery','deliverydate_error')">
-                    <span class="error" id="deliverydate_error"></span>
+                    <input class="checkbox" type="checkbox" id="discount" name="present" value="Provide 2% discount to the next time" oninput="validateCheckBoxes(2, 'checkbox_error')">
+                    <label for="discount">Provide 2% discount to the next time</label>
                 </li>
                 <li>
-                    <label for="street">street</label>
-                    <input type="text" name="street" id="street" oninput="main_validation('street', 'street','street_error')" onblur="main_validation('street', 'street','street_error')">
-                    <span class="error" id="street_error"></span>
-                </li>
-                <li>
-                    <label for="housen">house number</label>
-                    <input type="text" name="house" id="housen" oninput="main_validation('housen', 'house','house_error')" onblur="main_validation('housen', 'house','house_error')">
-                    <span class="error" id="house_error"></span>
-                </li>
-                <li>
-                    <label for="flatn">flat number</label>
-                    <input type="text" name="flat" id="flatn" oninput="main_validation('flatn', 'flat','flat_error')" onblur="main_validation('flatn', 'flat','flat_error')">
-                    <span class="error" id="flat_error"></span>
-                </li>
-                <li id="cash-card">
-                    <p>Choose the payment type</p>
-                    <div class="card-pay-container">
-                        <label for="card">Card</label>
-                        <input type="radio" id="card-pay" name="fav_language" value="card" oninput="validate('card-pay')">
-                    </div>
-                    <div class="card-pay-container">
-                        <label for="cash">Cash</label>
-                        <input type="radio" id="cash-pay" name="fav_language" value="cash" oninput="validate('cash-pay')">
-                    </div>
+                    <input class="checkbox" type="checkbox" id="brandedpresent" name="present" value="Branded pen or pencil" oninput="validateCheckBoxes(2, 'checkbox_error')">
+                    <label for="brandedpresent">Branded pen or pencil</label>
                 </li>
             </ul>
+            <span class="error" id="checkbox_error"></span>
         </section>
+        </div>
+        
 
-    <section id="gift">
-        <legend>Gift (only 2 gifts per order available)</legend>
-        <ul>
-            <li>
-                <input class="checkbox" type="checkbox" id="pack" name="present" value="Pack as a gift" oninput="validateCheckBoxes(2, 'checkbox_error')">
-                <label for="pack">Pack as a gift</label>
-            </li>
-            <li>
-                <input class="checkbox" type="checkbox" id="postcard" name="present" value="Add postcard" oninput="validateCheckBoxes(2, 'checkbox_error')">
-                <label for="postcard">Add postcard</label>
-            </li>
-            <li>
-                <input class="checkbox" type="checkbox" id="discount" name="present" value="Provide 2% discount to the next time" oninput="validateCheckBoxes(2, 'checkbox_error')">
-                <label for="discount">Provide 2% discount to the next time</label>
-            </li>
-            <li>
-                <input class="checkbox" type="checkbox" id="brandedpresent" name="present" value="Branded pen or pencil" oninput="validateCheckBoxes(2, 'checkbox_error')">
-                <label for="brandedpresent">Branded pen or pencil</label>
-            </li>
-        </ul>
-        <span class="error" id="checkbox_error"></span>
-    </section>
+    <button id="complete_btn" disabled onclick="complete()"> COMPLETE </button>
 
-    <button> COMPLETE </button>
-    </form>
+</div>
+<div id="info">
+    <h1></h1>
+    <p></p>
 </div>
 
 </body>
