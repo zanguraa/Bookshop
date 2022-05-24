@@ -57,17 +57,17 @@ function validate(el,size,error_id,stringCheck=true) {
     var err = document.getElementById(error_id);
     if (checkEmpty(el)) {
         err.style.display = 'block';
-        err.innerHTML = 'carielia';
+        err.innerHTML = 'empty';
     } else if (checkSize(el,size)) {
         err.style.display = 'block';
         if(!checkString(el) && stringCheck) {
-            err.innerHTML = `marto stringiiii, naklebia ${size}-ze`;
+            err.innerHTML = `only string, not less then ${size}`;
         } else {
-            err.innerHTML = `naklebia ${size}-ze`;
+            err.innerHTML = `not less then ${size}`;
         }
     } else if (!checkString(el) && stringCheck) {
         err.style.display = 'block';
-        err.innerHTML = 'marto stringiiii';
+        err.innerHTML = 'only string';
     } else {
         err.style.display = 'none';
     }
@@ -86,7 +86,7 @@ function validateDate(date1, date2, error_id) {
 
     if (date2 <= date1) {
         err.style.display = 'block';
-        err.innerHTML = 'xvalidan';
+        err.innerHTML = 'from next day';
     } else {
         err.style.display = 'none';
     }
@@ -97,20 +97,20 @@ function validateNumbers(el,error_id, dashes=false) {
     if (dashes) {
         if (checkEmpty(el)) {
             err.style.display = 'block';
-            err.innerHTML = 'carielia';
+            err.innerHTML = 'empty';
         } else  if ( !checkPosNumbersWithDashes(el) ) {
             err.style.display = 'block';
-            err.innerHTML = 'mxolod dadebiti';
+            err.innerHTML = 'only positive';
         } else {
             err.style.display = 'none';
         }
     } else {
         if (checkEmpty(el)) {
             err.style.display = 'block';
-            err.innerHTML = 'carielia';
+            err.innerHTML = 'empty';
         } else  if ( !checkPosNumbers(el) ) {
             err.style.display = 'block';
-            err.innerHTML = 'mxolod dadebiti';
+            err.innerHTML = 'only positive';
         } else {
             err.style.display = 'none';
         }
@@ -131,7 +131,7 @@ function validateCheckBoxes(checkedLenhtg, error_id) {
         err.style.display = 'none';
     } else {
         err.style.display = 'block';
-        err.innerHTML = 'carielia';
+        err.innerHTML = 'you must choose only 2 gift';
     }
 }
 
