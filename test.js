@@ -79,6 +79,7 @@ function createCartContainer() {
 
     
     var priceEl = document.createElement('span');
+    priceEl.classList.add('total-price');
     var totalPrice = 0;
 
     cartItems.forEach(element => {
@@ -118,6 +119,7 @@ function createCartContainer() {
         infoBlock.appendChild(title);        
     
         var price = document.createElement('span');
+        price.classList.add('total-price-style');
         price.innerHTML = `Price: ${book.price}₾`;
     
         infoBlock.appendChild(price);

@@ -99,6 +99,18 @@ li {
   border-radius: 5px;
 }
 
+#add_to_bag {
+  border-radius: 5px;
+    border: 1px solid darkcyan;
+    background: #a91616;
+    color: white;
+    cursor: pointer;
+}
+
+#add_to_bag:hover {
+  transform: scale(1.1, 1.2);
+  background-color: green;
+}
 
 .fa-cart-arrow-down {
   font-size: 30px;
@@ -151,6 +163,7 @@ h4 {
     border-radius: 5px;
     background-color: rgb(2, 169, 162);
     color: rgb(255, 255, 255);
+    cursor: pointer;
 }
 
 /* starting modal styles */
@@ -179,6 +192,30 @@ h4 {
     line-height: 1.9rem;
     border: 1px solid #888;
     width: 80%;
+  }
+
+  #remove_button {
+    background: rgb(1, 158, 151);
+    border: none;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 16px;
+    margin-bottom: 6px;
+  }
+
+#remove_button:hover {
+  transform: scale(1.2, 1.2);
+  background-color: #a91616;
+}
+
+  .total-price{
+    font-weight: bold;
+    color: red;
+    font-size: 30px;
+    margin: 10px;
+    padding: 5px;
   }
   
   /* The Close Button */
@@ -224,3 +261,17 @@ h4 {
   h6 {
     margin: 5px;
   }
+
+  #confirm_button {
+    margin: 10px;
+    padding: 7px;
+    font-family: cursive;
+    font-size: 20px;
+    border: 2px solid rgb(131 131 141);
+    border-radius: 8px;
+}
+
+#confirm_button:hover {
+  background-color: #a91616;
+  cursor: pointer;
+}
